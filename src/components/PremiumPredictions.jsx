@@ -1,1 +1,0 @@
-export default function PremiumPredictions() { return <div>PremiumPredictions Page</div>; }
