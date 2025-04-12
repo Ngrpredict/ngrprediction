@@ -11,6 +11,7 @@ import AdminDashboard from './components/AdminDashboard';
 import PaymentSuccess from './components/PaymentSuccess';
 import NotFoundPage from './components/NotFoundPage';
 import ContactPopup from './components/ContactPopup';
+import Pricing from './components/Pricing'; // 🆕 Added
 
 const PrivateRoute = ({ children }) => {
   const { currentUser, isPaidUser } = useAuth();
@@ -28,26 +29,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<><HomePage /><ContactPopup /></>} />
+          <Route path="/pricing" element={<Pricing />} /> {/* 🆕 Added */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/free" element={<FreePredictions />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
-          <Route
-            path="/premium"
-            element={
-              <PrivateRoute>
-                <PremiumPredictions />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <AdminRoute>
-                <AdminDashboard />
-              </AdminRoute>
-            }
-          />
+          <Route path="/premium" element={<PrivateRoute><PremiumPredictions /></PrivateRoute>} />
+          <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
