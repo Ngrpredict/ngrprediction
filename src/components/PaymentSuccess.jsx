@@ -1,0 +1,1 @@
+export default function PaymentSuccess() { return <div>PaymentSuccess Page</div>; }
